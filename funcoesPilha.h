@@ -1,12 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 100
+#define BASE -1
 #include "pilhaEstatica.h"
-
-typedef struct pilha
-{
-    int pilha[MAX];
-    int topo;
-} PILHA;
 
 
 int pilhaCheia(PILHA p)
