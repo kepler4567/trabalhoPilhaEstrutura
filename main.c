@@ -4,7 +4,6 @@
 #include "funcoesPilha.h"
 
 
-
 bool digitosEstaoEntreUmECinco(int quantidadeDeNumeros){
 
     return 3 > quantidadeDeNumeros < 5;
@@ -66,6 +65,9 @@ void printarPilhas(int quantidadeDeNumeros) {
 
 
 void trocarElementosDeLugar(){
+
+    int  empilha(PILHA *p, int n);
+    int  desempilha(PILHA *p, int *n);
 
 }
 

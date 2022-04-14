@@ -9,7 +9,6 @@ typedef struct pilha
 
 int pilhaCheia (PILHA p);
 int pilhaVazia(PILHA p);
-
 void inicializaPilha(PILHA *p);
 int  empilha(PILHA *p, int n);
 int  desempilha(PILHA *p, int *n);
