@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "funcoesPilha.h"
+
+
 
 bool digitosEstaoEntreUmECinco(int quantidadeDeNumeros){
 
@@ -23,16 +26,41 @@ int receberDigitos() {
 void formarPilhas(int quantidadeDeNumeros){
 
     int pilhasQueSeraoFormadas = quantidadeDeNumeros + 2;
+    int elementoParaInserirNaPilha;
 
-    for (int i = 0; i < pilhasQueSeraoFormadas; i++)
+    for (int i = 0; i <= pilhasQueSeraoFormadas; i++)
     {
     
-      void inicializaPilha();
+        inicializaPilha();
 
     }
+
+    for (int j = 0; j < quantidadeDeNumeros; j++)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            elementoParaInserirNaPilha = (rand() % quantidadeDeNumeros) + 1;
+            empilha(PILHA p, elementoParaInserirNaPilha);
+        }
+        
+    }
+    
 }
 
-void printarPilhas() {
+void printarPilhas(int quantidadeDeNumeros) {
+    int pilhasQueSeraoPrintadas = quantidadeDeNumeros + 2;
+    int elemento;
+
+    for (int i = 1; i < pilhasQueSeraoPrintadas; i++)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            elemento = elementoDoTopo(PILHA P);
+            printf(elemento);
+        }
+        printf("|");
+    }
+    
 
 }
 
