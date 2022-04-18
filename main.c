@@ -6,18 +6,18 @@
 
 bool digitosEstaoEntreUmECinco(int quantidadeDeNumeros){
 
-    return 3 > quantidadeDeNumeros < 5;
+    return 3 <= quantidadeDeNumeros && quantidadeDeNumeros <= 5;
 }
 
 int receberDigitos() {
     int quantidadeDeNumeros;
     printf("Digite a quantidade de numeros que serao distribuidos entre as pilhas: ");
-    scanf("%i", quantidadeDeNumeros);
+    scanf("%i", &quantidadeDeNumeros);
 
-    if (digitosEstaoEntreUmECinco) {
+    if (digitosEstaoEntreUmECinco(quantidadeDeNumeros)) {
         return quantidadeDeNumeros;
-    } else { 
-        printf("Digite um número de 3 a 5");
+    } else {
+        printf("Digite um numero de 3 a 5\n");
         receberDigitos();
     }
 }
@@ -27,23 +27,23 @@ void formarPilhas(int quantidadeDeNumeros){
     int pilhasQueSeraoFormadas = quantidadeDeNumeros + 2;
     int elementoParaInserirNaPilha;
 
-    for (int i = 0; i <= pilhasQueSeraoFormadas; i++)
+    for (int i = 0; i < pilhasQueSeraoFormadas; i++)
     {
-    
-        inicializaPilha();
 
+        PILHA p[i] = inicializaPilha(p);
+        printf("%i", i);
     }
 
     for (int j = 0; j < quantidadeDeNumeros; j++)
     {
         for (int i = 0; i < 5; i++)
         {
-            elementoParaInserirNaPilha = (rand() % quantidadeDeNumeros) + 1;
-            empilha(PILHA p, elementoParaInserirNaPilha);
+            //elementoParaInserirNaPilha = (rand() % quantidadeDeNumeros) + 1;
+            //empilha(PILHA p, elementoParaInserirNaPilha);
         }
-        
+
     }
-    
+
 }
 
 void printarPilhas(int quantidadeDeNumeros) {
@@ -54,12 +54,12 @@ void printarPilhas(int quantidadeDeNumeros) {
     {
         for (int i = 0; i < 4; i++)
         {
-            elemento = elementoDoTopo(PILHA P);
+            //elemento = elementoDoTopo(PILHA P);
             printf(elemento);
         }
         printf("|");
     }
-    
+
 
 }
 
@@ -75,7 +75,7 @@ void main(){
     int quantidadeDeNumeros = receberDigitos();
     formarPilhas(quantidadeDeNumeros);
 
-    
+
 
     return 0;
 }
