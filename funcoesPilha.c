@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 100
-#define BASE -1
 #include "pilhaEstatica.h"
 
 

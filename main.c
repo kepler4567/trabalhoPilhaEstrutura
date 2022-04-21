@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "funcoesPilha.h"
+#include "funcoesPilha.c"
 
+
+PILHA p[];
 
 bool digitosEstaoEntreUmECinco(int quantidadeDeNumeros){
 
@@ -27,40 +29,38 @@ void formarPilhas(int quantidadeDeNumeros){
     int pilhasQueSeraoFormadas = quantidadeDeNumeros + 2;
     int elementoParaInserirNaPilha;
 
-    for (int i = 0; i < pilhasQueSeraoFormadas; i++)
+    for (int i = 1; i <= pilhasQueSeraoFormadas; i++)
     {
-
-        PILHA p[i] = inicializaPilha(p);
-        printf("%i", i);
+        inicializaPilha(&p[i]);
     }
 
-    for (int j = 0; j < quantidadeDeNumeros; j++)
+    for (int j = 1; j <= quantidadeDeNumeros; j++)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 1; i <= 4; i++)
         {
-            //elementoParaInserirNaPilha = (rand() % quantidadeDeNumeros) + 1;
-            //empilha(PILHA p, elementoParaInserirNaPilha);
+            elementoParaInserirNaPilha = (rand() % quantidadeDeNumeros) + 1;
+            empilha(&p[j], elementoParaInserirNaPilha);
         }
 
     }
-
 }
 
 void printarPilhas(int quantidadeDeNumeros) {
     int pilhasQueSeraoPrintadas = quantidadeDeNumeros + 2;
     int elemento;
 
-    for (int i = 1; i < pilhasQueSeraoPrintadas; i++)
+    for (int j = 1; j <= pilhasQueSeraoPrintadas; j++)
     {
-        for (int i = 0; i < 4; i++)
+        PILHA p2 = p[j];
+        printf("--------PILHA %d------ \n\n", j);
+
+        for (int i = 3; i > -1; i--)
         {
-            //elemento = elementoDoTopo(PILHA P);
-            printf(elemento);
+            if(p2.pilha[i] != 0) { printf("\t| %d |\n", p2.pilha[i]); }
+            else { printf("\t|   |\n"); }
         }
-        printf("|");
+        printf("\n");
     }
-
-
 }
 
 
@@ -71,11 +71,40 @@ void trocarElementosDeLugar(){
 
 }
 
+void iniciarJogo() {
+    int pilhaQueSeraRemovidoElem;
+    int pilhaQueSeraAdicionadoElem;
+
+    if(verificaSeJogoTerminou()) {
+
+        printf("Digite a pilha que voce quer remover o elemento");
+        scanf("%i", &pilhaQueSeraRemovidoElem);
+        printf("Digite a pilha que voce quer adicionar o elemento");
+        scanf("%i", &pilhaQueSeraRemovidoElem);
+    }
+
+};
+
+
+bool verificaSeJogoTerminou() {
+
+    for (int j = 1; j <= pilhasQueSeraoPrintadas; j++)
+    {
+        PILHA p2 = p[j];
+
+        for (int i = 3; i > -1; i--)
+        {
+            if(p2.pilha[i] != p2.pilha[--i]) return false;
+        }
+    }
+    return true;
+}
+
 void main(){
     int quantidadeDeNumeros = receberDigitos();
     formarPilhas(quantidadeDeNumeros);
-
-
+    printarPilhas(quantidadeDeNumeros);
+    IniciarJogo();
 
     return 0;
 }
