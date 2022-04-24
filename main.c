@@ -38,11 +38,33 @@ void formarPilhas(int quantidadeDeNumeros){
     {
         for (int i = 1; i <= 4; i++)
         {
-            elementoParaInserirNaPilha = (rand() % quantidadeDeNumeros) + 1;
+            elementoParaInserirNaPilha = elementoQueSeraPreenchido(quantidadeDeNumeros);
             empilha(&p[j], elementoParaInserirNaPilha);
         }
 
     }
+}
+
+int elementosJaInseridos[];
+int i = 0;
+int elementoQueSeraPreenchido(int nDigitados){
+    int elementoQSeraInserido = (rand() % nDigitados) + 1;
+    elementosJaInseridos[i] = elementoQSeraInserido;
+    int quantDoMesmoElementoJaInserido = 0;
+
+    for(int j = 0; j<= i; j++) {
+        if(elementosJaInseridos[j] == elementoQSeraInserido) {
+            quantDoMesmoElementoJaInserido++;
+        printf("%i e %i e %i\n", elementosJaInseridos[j], elementoQSeraInserido, quantDoMesmoElementoJaInserido);
+        }
+    }
+    printf("teste\n");
+    i++;
+    if(quantDoMesmoElementoJaInserido >= 4) {
+        i = 0;
+        elementoQueSeraPreenchido(nDigitados);
+    }
+    else return elementoQSeraInserido;
 }
 
 void printarPilhas(int quantidadeDeNumeros) {
