@@ -55,16 +55,16 @@ int elementoQueSeraPreenchido(int nDigitados){
     for(int j = 0; j<= i; j++) {
         if(elementosJaInseridos[j] == elementoQSeraInserido) {
             quantDoMesmoElementoJaInserido++;
-        printf("%i e %i e %i\n", elementosJaInseridos[j], elementoQSeraInserido, quantDoMesmoElementoJaInserido);
         }
     }
-    printf("teste\n");
-    i++;
-    if(quantDoMesmoElementoJaInserido >= 4) {
-        i = 0;
+
+    if(quantDoMesmoElementoJaInserido > 4) {
         elementoQueSeraPreenchido(nDigitados);
     }
-    else return elementoQSeraInserido;
+    else {
+     i++;
+     return elementoQSeraInserido;
+    }
 }
 
 void printarPilhas(int quantidadeDeNumeros) {
