@@ -1,4 +1,4 @@
-#define MAX 100
+#define MAX 4
 #define BASE -1
 
 typedef struct pilha
