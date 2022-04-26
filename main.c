@@ -36,13 +36,15 @@ void formarPilhas(int quantidadeDeNumeros){
 
     for (int j = 1; j <= quantidadeDeNumeros; j++)
     {
-        for (int i = 1; i <= 4; i++)
+
+        for (int i = 0; i <= 3; i++)
         {
             elementoParaInserirNaPilha = elementoQueSeraPreenchido(quantidadeDeNumeros);
             empilha(&p[j], elementoParaInserirNaPilha);
         }
 
     }
+    printarPilhas(quantidadeDeNumeros);
 }
 
 int elementosJaInseridos[];
@@ -101,7 +103,6 @@ bool jogoTerminou(int nDigitadoUsuario) {
 
         for (int i = p2.topo; i >= 1; i--)
         {
-            printf("%i na pilha %i na posicao %i e %i na posicao %i\n", p2.pilha[i], j, i, p2.pilha[i-1], i-1);
             if(p2.pilha[i] != p2.pilha[i-1] || pilhaCheia(p2) || pilhaVazia(p2)) return false; // verificar tbm se tem pilhas vazias
         }
     }
@@ -126,9 +127,9 @@ int iniciarJogo(int nDigitadoUsuario) {
 
     while(!jogoTerminou(nDigitadoUsuario)) {
 
-        printf("Digite a pilha que voce quer remover o elemento: ");
+        printf("\nDigite a pilha que voce quer remover o elemento: ");
         scanf("%i", &pilhaOrigem);
-        printf("Digite a pilha que voce quer adicionar o elemento: ");
+        printf("\nDigite a pilha que voce quer adicionar o elemento: ");
         scanf("%i", &pilhaDestino);
 
         if(podeTrocarElementos(pilhaOrigem, pilhaDestino, nDigitadoUsuario)  ) {
@@ -149,9 +150,7 @@ void main(){
     printf("Bem vindo ao jogo, o seu objetivo e deixar todas as pilhas com o mesmo elemento\n\n");
     int nDigitadoUsuario = receberDigitos();
     formarPilhas(nDigitadoUsuario);
-    printarPilhas(nDigitadoUsuario);
     int quantJogadas = iniciarJogo(nDigitadoUsuario);
 
     printf("Parabens, voce terminou o jogo em %i jogadas", quantJogadas);
-    return 0;
 }
