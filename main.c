@@ -117,12 +117,12 @@ bool podeTrocarElementos(int pilhaOrigem, int pilhaDestino, int nDigitadoUsuario
         pilhaOrigem > 0 &&
         pilhaDestino <= nDigitadoUsuario + 2 &&
         pilhaDestino > 0;
-
 }
 
-void iniciarJogo(int nDigitadoUsuario) {
+int iniciarJogo(int nDigitadoUsuario) {
     int pilhaOrigem;
     int pilhaDestino;
+    int quantidadeJogadas = 0;
 
     while(!jogoTerminou(nDigitadoUsuario)) {
 
@@ -139,9 +139,9 @@ void iniciarJogo(int nDigitadoUsuario) {
             printf("Jogada invalida\n");
             printarPilhas(nDigitadoUsuario);
          }
-
+        quantidadeJogadas++;
     }
-
+    return quantidadeJogadas;
 };
 
 
@@ -150,7 +150,8 @@ void main(){
     int nDigitadoUsuario = receberDigitos();
     formarPilhas(nDigitadoUsuario);
     printarPilhas(nDigitadoUsuario);
-    iniciarJogo(nDigitadoUsuario);
+    int quantJogadas = iniciarJogo(nDigitadoUsuario);
 
+    printf("Parabens, voce terminou o jogo em %i jogadas", quantJogadas);
     return 0;
 }
