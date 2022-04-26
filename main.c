@@ -99,34 +99,54 @@ bool jogoTerminou(int nDigitadoUsuario) {
     {
         PILHA p2 = p[j];
 
-        for (int i = 3; i > -1; i--)
+        for (int i = p2.topo; i >= 1; i--)
         {
-            if(p2.pilha[i] != p2.pilha[i-1]) return false;
+            printf("%i na pilha %i na posicao %i e %i na posicao %i\n", p2.pilha[i], j, i, p2.pilha[i-1], i-1);
+            if(p2.pilha[i] != p2.pilha[i-1] || pilhaCheia(p2) || pilhaVazia(p2)) return false; // verificar tbm se tem pilhas vazias
         }
     }
     return true;
 }
 
 
+bool podeTrocarElementos(int pilhaOrigem, int pilhaDestino, int nDigitadoUsuario) {
+
+    return !pilhaVazia(p[pilhaOrigem]) &&
+        !pilhaCheia(p[pilhaDestino]) &&
+        pilhaOrigem <= nDigitadoUsuario + 2 &&
+        pilhaOrigem > 0 &&
+        pilhaDestino <= nDigitadoUsuario + 2 &&
+        pilhaDestino > 0;
+
+}
+
 void iniciarJogo(int nDigitadoUsuario) {
-    int pilhaQueSeraRemovidoElem;
-    int pilhaQueSeraAdicionadoElem;
+    int pilhaOrigem;
+    int pilhaDestino;
 
     while(!jogoTerminou(nDigitadoUsuario)) {
 
         printf("Digite a pilha que voce quer remover o elemento: ");
-        scanf("%i", &pilhaQueSeraRemovidoElem);
+        scanf("%i", &pilhaOrigem);
         printf("Digite a pilha que voce quer adicionar o elemento: ");
-        scanf("%i", &pilhaQueSeraAdicionadoElem);
+        scanf("%i", &pilhaDestino);
 
-        trocarElementosDePilha(pilhaQueSeraRemovidoElem, pilhaQueSeraAdicionadoElem);
-        printarPilhas(nDigitadoUsuario);
+        if(podeTrocarElementos(pilhaOrigem, pilhaDestino, nDigitadoUsuario)  ) {
+            trocarElementosDePilha(pilhaOrigem, pilhaDestino);
+            printarPilhas(nDigitadoUsuario);
+        }
+        else {
+            printf("Jogada invalida\n");
+            printarPilhas(nDigitadoUsuario);
+         }
+
     }
 
 };
 
 
 void main(){
+    printf("Bem vindo ao jogo, o seu objetivo e deixar todas as pilhas com o mesmo elemento\n\n");
     int nDigitadoUsuario = receberDigitos();
     formarPilhas(nDigitadoUsuario);
     printarPilhas(nDigitadoUsuario);
