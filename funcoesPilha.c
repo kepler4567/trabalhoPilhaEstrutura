@@ -5,7 +5,7 @@
 
 int pilhaCheia(PILHA p)
 {
-    return (p.topo == MAX - 1);
+    return (p.topo == MAX);
 }
 
 int pilhaVazia(PILHA p)
@@ -24,8 +24,8 @@ int empilha(PILHA *p, int n)
         return 0;
     else
     {
-        p->topo++;
         p->pilha[p->topo] = n;
+        p->topo++;
         return 1;
     }
 }

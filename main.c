@@ -24,9 +24,9 @@ int receberDigitos() {
     }
 }
 
-void formarPilhas(int quantidadeDeNumeros){
+void formarPilhas(int nDigitadosUsuario){
 
-    int pilhasQueSeraoFormadas = quantidadeDeNumeros + 2;
+    int pilhasQueSeraoFormadas = nDigitadosUsuario + 2;
     int elementoParaInserirNaPilha;
 
     for (int i = 1; i <= pilhasQueSeraoFormadas; i++)
@@ -34,27 +34,27 @@ void formarPilhas(int quantidadeDeNumeros){
         inicializaPilha(&p[i]);
     }
 
-    for (int j = 1; j <= quantidadeDeNumeros; j++)
+    for (int j = 1; j <= nDigitadosUsuario; j++)
     {
 
         for (int i = 0; i <= 3; i++)
         {
-            elementoParaInserirNaPilha = elementoQueSeraPreenchido(quantidadeDeNumeros);
+            elementoParaInserirNaPilha = elementoQueSeraPreenchido(nDigitadosUsuario);
             empilha(&p[j], elementoParaInserirNaPilha);
         }
 
     }
-    printarPilhas(quantidadeDeNumeros);
+    printarPilhas(nDigitadosUsuario);
 }
 
 int elementosJaInseridos[];
-int i = 0;
+int k = 0;
 int elementoQueSeraPreenchido(int nDigitados){
     int elementoQSeraInserido = (rand() % nDigitados) + 1;
-    elementosJaInseridos[i] = elementoQSeraInserido;
+    elementosJaInseridos[k] = elementoQSeraInserido;
     int quantDoMesmoElementoJaInserido = 0;
 
-    for(int j = 0; j<= i; j++) {
+    for(int j = 0; j<= k; j++) {
         if(elementosJaInseridos[j] == elementoQSeraInserido) {
             quantDoMesmoElementoJaInserido++;
         }
@@ -64,14 +64,13 @@ int elementoQueSeraPreenchido(int nDigitados){
         elementoQueSeraPreenchido(nDigitados);
     }
     else {
-     i++;
+     k++;
      return elementoQSeraInserido;
     }
 }
 
 void printarPilhas(int quantidadeDeNumeros) {
     int pilhasQueSeraoPrintadas = quantidadeDeNumeros + 2;
-    int elemento;
 
     for (int j = 1; j <= pilhasQueSeraoPrintadas; j++)
     {
