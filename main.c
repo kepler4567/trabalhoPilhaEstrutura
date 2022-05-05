@@ -37,36 +37,48 @@ void formarPilhas(int nDigitadosUsuario){
     for (int j = 1; j <= nDigitadosUsuario; j++)
     {
 
-        for (int i = 0; i <= 3; i++)
+        PILHA *p2 = &p[j];
+        for (int i = 0; i < 4; i++)
         {
             elementoParaInserirNaPilha = elementoQueSeraPreenchido(nDigitadosUsuario);
-            empilha(&p[j], elementoParaInserirNaPilha);
+            empilha(p2, elementoParaInserirNaPilha);
         }
-
     }
     printarPilhas(nDigitadosUsuario);
 }
 
 int elementosJaInseridos[];
 int k = 0;
-int elementoQueSeraPreenchido(int nDigitados){
-    int elementoQSeraInserido = (rand() % nDigitados) + 1;
-    elementosJaInseridos[k] = elementoQSeraInserido;
-    int quantDoMesmoElementoJaInserido = 0;
+bool contemMuitosRepitidos(int elementoQSeraInserido) {
 
-    for(int j = 0; j<= k; j++) {
+    int quantDoMesmoElementoJaInserido = 0;
+    int tamElemJaInserido = k;
+    printf("elemen que sera inserido %i\n", elementoQSeraInserido);
+    for(int j = 0; j <= tamElemJaInserido; j++) {
+        printf("%i", elementosJaInseridos[j]);
         if(elementosJaInseridos[j] == elementoQSeraInserido) {
             quantDoMesmoElementoJaInserido++;
         }
     }
+    elementosJaInseridos[k] = elementoQSeraInserido;
+    printf("\n------%i vezes repitidas\n", quantDoMesmoElementoJaInserido);
+    if(quantDoMesmoElementoJaInserido > 4 ) { return true; }
+    else return false;
+}
 
-    if(quantDoMesmoElementoJaInserido > 4) {
-        elementoQueSeraPreenchido(nDigitados);
+
+
+int elementoQueSeraPreenchido(int nDigitados){
+    int elementoQSeraInserido =  1 + rand()%(nDigitados);
+
+    while(contemMuitosRepitidos(elementoQSeraInserido) || elementoQSeraInserido > nDigitados) {
+        elementoQSeraInserido =  rand()%(nDigitados) + 1;
+        printf("\nNao foi inserido\n");
+
     }
-    else {
-     k++;
+    printf("\nfoi inserido\n");
+    k++;
      return elementoQSeraInserido;
-    }
 }
 
 void printarPilhas(int quantidadeDeNumeros) {

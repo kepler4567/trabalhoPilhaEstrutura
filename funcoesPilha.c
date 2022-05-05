@@ -18,15 +18,15 @@ void inicializaPilha(PILHA *p)
     p->topo = BASE;
 }
 
-int empilha(PILHA *p, int n)
+void empilha(PILHA *p, int n)
 {
     if (pilhaCheia(*p))
-        return 0;
+        return;
     else
     {
-        p->pilha[p->topo] = n;
         p->topo++;
-        return 1;
+        p->pilha[p->topo] = n;
+        return;
     }
 }
 

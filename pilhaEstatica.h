@@ -1,7 +1,7 @@
 #define MAX 3
 #define BASE -1
 
-typedef struct pilha
+typedef struct
 {
     int pilha[MAX];
     int topo;
@@ -11,6 +11,6 @@ int pilhaCheia (PILHA p);
 int pilhaVazia(PILHA p);
 
 void inicializaPilha(PILHA *p);
-int  empilha(PILHA *p, int n);
+void empilha(PILHA *p, int n);
 int  desempilha(PILHA *p, int *n);
 int  elementoDoTopo(PILHA p);
